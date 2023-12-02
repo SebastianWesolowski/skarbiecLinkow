@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hr.wesolowski.dev
+
+# Sitemaps
+Sitemap: https://hr.wesolowski.dev/sitemap.xml

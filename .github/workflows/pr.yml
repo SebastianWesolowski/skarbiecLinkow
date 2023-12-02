@@ -1,0 +1,101 @@
+# Reusable workflow for PRs; to eject, you can replace this file with
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📝Checkout"
+        uses: actions/checkout@v4
+      - run: echo "node_version=$(cat .github/nodejs.version)" >> $GITHUB_ENV
+
+      - name: "use 🟢Node ${{ env.node_version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.node_version }}"
+          cache: 'yarn'
+
+      - name: "📂 Get yarn cache directory path"
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: "💽 Cache node_modules"
+        uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: "📂 Install dependencies"
+        run: yarn install --frozen-lockfile
+
+      - name: "👀 Lint check"
+        run: yarn lint
+
+      - name: "📏 Format check"
+        run: yarn format:check
+
+      - name: "✅Test"
+        run: yarn test:ci
+
+      - name: "⬆️ Upload Code Coverage"
+        uses: codecov/codecov-action@v3.1.0
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [ checks ]
+
+    steps:
+      - name: "📝Checkout"
+        uses: actions/checkout@v4
+      - run: echo "node_version=$(cat .github/nodejs.version)" >> $GITHUB_ENV
+
+      - name: "use 🟢Node ${{ env.node_version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.node_version }}"
+          cache: 'yarn'
+
+      - name: "📂 Get yarn cache directory path"
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: "💽 Cache node_modules"
+        uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: "📂 Install dependencies"
+        run: yarn install --frozen-lockfile
+
+
+      - name: "👷Build"
+        run: yarn build
+
+
+  upload-to-codecov:
+    runs-on: ubuntu-latest
+    needs: [ build, checks ]
+    steps:
+
+      - name: "📝Checkout"
+        uses: actions/checkout@v4
+
+      - name: "⬇️ Download artifacts"
+        uses: actions/download-artifact@v2
+
+      - name: "⬆️ Upload Code Coverage"
+        uses: codecov/codecov-action@v3.1.0
