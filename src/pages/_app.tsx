@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { Analytics } from "@/utils";
+
 import { AppProvider } from "@organisms";
 
 import "@/styles/tailwind.scss";
@@ -16,7 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <AppProvider {...pageProps}>
-        <Analytics />
         <Component {...pageProps} />
       </AppProvider>
     </>

@@ -68,6 +68,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.13",
     "@fontsource/lexend": "^5.0.15",
+    "@heroicons/react": "^2.0.18",
     "@next/bundle-analyzer": "^13.3.0",
     "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.0.3",
@@ -100,6 +101,7 @@
     "react-dom": "^18",
     "react-hotjar": "5.5.0",
     "tailwind-merge": "^1.10.0",
+    "uuid": "^9.0.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
