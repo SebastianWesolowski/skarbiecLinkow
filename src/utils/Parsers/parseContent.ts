@@ -19,17 +19,20 @@ export const parseContent = (contentObject: any) => {
 
     acc[category].push({ ...item });
 
-    if (acc[category].todo) {
-      acc[category].forEach((element) => {
+    acc[category].forEach((element: any) => {
+      if (element.todo) {
         return element.todo.forEach((todoElement) => {
           todoElement.uuid = uuidv5(element.path + todoElement.title, uuidv5.URL);
         });
-      });
-    }
+      }
+      return element;
+      // return element.todo.forEach((todoElement) => {
+      //   todoElement.uuid = uuidv5(element.path + todoElement.title, uuidv5.URL);
+      // });
+    });
 
     return acc;
   }, {});
 
-  console.log(groupedByCategory);
   return { meta: contentObject.categoryDescription, groupedByCategory };
 };

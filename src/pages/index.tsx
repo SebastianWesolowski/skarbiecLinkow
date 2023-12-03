@@ -1,6 +1,7 @@
 import React from "react";
 import { parseContent } from "@/utils/Parsers/parseContent";
 import content from "@assets/content/content";
+import { Container } from "@atoms";
 import { Seo } from "@molecules";
 import { BasicLayout } from "@organisms";
 import { CategorySection } from "@organisms/CategorySection";
@@ -13,8 +14,10 @@ const Homepage = () => {
       <BasicLayout>
         <Seo />
         <main>
-          <CategorySection contentObject={contentObject} />
-          <ContentSection contentObject={contentObject} />
+          <Container>
+            <CategorySection contentObject={contentObject} />
+            <ContentSection contentObject={contentObject} />
+          </Container>
         </main>
       </BasicLayout>
     </>

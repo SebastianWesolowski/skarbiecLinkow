@@ -7,7 +7,7 @@ export const CheckboxList: FC<PropsWithChildren<any>> = ({ contentLink }) => {
     <div className='px-6 pb-5'>
       <fieldset className='space-y-5'>
         {todo.map(({ title, description, uuid }: any) => {
-          return <Checkbox key={uuid} title={title} description={description} uuid={uuid} />;
+          return <Checkbox key={`Checkbox-${uuid}`} title={title} description={description} uuid={uuid} />;
         })}
       </fieldset>
     </div>

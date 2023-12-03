@@ -1,9 +1,7 @@
+import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { FC } from "react";
-import MinimalLogo from "@assets/svg/MinimalLogo";
-import { ButtonLink, Container } from "@atoms";
-
-import { MobileNavigation } from "./MobileNavigation";
+import React, { FC } from "react";
+import { Container } from "@atoms";
 
 export const Header: FC = (): JSX.Element => (
   <header className='py-10'>
@@ -12,48 +10,14 @@ export const Header: FC = (): JSX.Element => (
         <ul className='flex items-center'>
           <li>
             <Link href='/'>
-              <span className='sr-only'>Home</span>
-              <MinimalLogo className='h-10 w-auto' />
+              <div className={"flex flex-row"}>
+                <span className='sr-only'>Home</span>
+                <CurrencyDollarIcon className='h-10 w-auto' style={{ marginLeft: "-3px" }} />
+                <div className='mx-auto'>
+                  <h1 className='text-3xl font-bold leading-tight text-gray-900'>Skarbiec Linków</h1>
+                </div>
+              </div>
             </Link>
-          </li>
-          <li className='ml-12 hidden md:block'>
-            <Link
-              href='#features'
-              className='rounded-lg px-2 py-1 text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-            >
-              Features
-            </Link>
-          </li>
-          <li className='ml-6 hidden md:block'>
-            <Link
-              href='#testimonials'
-              className='rounded-lg px-2 py-1 text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-            >
-              Testimonials
-            </Link>
-          </li>
-          <li className='ml-6 hidden md:block'>
-            <Link
-              href='#pricing'
-              className='rounded-lg px-2 py-1 text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-            >
-              Pricing
-            </Link>
-          </li>
-          <li className='ml-auto hidden md:block'>
-            <Link href='/login' className='rounded-lg px-2 py-1 text-slate-700 hover:bg-slate-100 hover:text-slate-900'>
-              Sign in
-            </Link>
-          </li>
-          <li className='ml-auto md:ml-8'>
-            <ButtonLink href='/wesolowski' color='yellow'>
-              <span>
-                Get started<span className='hidden lg:inline'> today</span>
-              </span>
-            </ButtonLink>
-          </li>
-          <li className='-mr-1 ml-5 md:hidden'>
-            <MobileNavigation />
           </li>
         </ul>
       </nav>

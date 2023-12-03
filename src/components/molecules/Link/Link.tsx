@@ -4,7 +4,7 @@ import { Card } from "@atoms/Card/Card";
 import { CheckboxList } from "@molecules/CheckboxList";
 
 export const Link: FC<PropsWithChildren<any>> = ({ contentLink }) => {
-  const { path, description, name, todo } = contentLink;
+  const { path, description, name, todo, uuid } = contentLink;
   return (
     <div
       className={
@@ -22,8 +22,13 @@ export const Link: FC<PropsWithChildren<any>> = ({ contentLink }) => {
             : {}
         }
       >
-        <Card.Link path={path} title={description}>
-          <Card.Content title={name} subtitle={description} customIcon={<LinkIcon className='h-6 w-6 text-blue' />} />
+        <Card.Link path={path} title={description} uuid={uuid}>
+          <Card.Content
+            title={name}
+            subtitle={description}
+            customIcon={<LinkIcon className='h-6 w-6 text-blue' />}
+            uuid={uuid}
+          />
         </Card.Link>
       </div>
 
