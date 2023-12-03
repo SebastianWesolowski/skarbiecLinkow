@@ -1,7 +1,7 @@
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-const AppContext = createContext();
+const AppContext = createContext({});
 // Hook do użycia kontekstu
 export const useAppContext: any = () => useContext(AppContext);
 
@@ -27,33 +27,29 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
     // }
   }, []);
 
-  // Stan przechowujący obiekty typu linki i zadania
   const [links, setLinks] = useState([]);
-  const [tasks, setTasks] = useState([]);
-  // Funkcja dodająca nowy link
-  const addLink = (id) => {
+  const [tasks, setTasks] = useState<any>([]);
+  const addLink = (id: any) => {
     const linkExists = checkIfExists(links, id);
 
     if (!linkExists) {
-      const itemToAdd = [...links, id];
+      const itemToAdd: any = [...links, id];
       const serializedItem = JSON.stringify(itemToAdd);
 
       setLinks(itemToAdd);
 
       setLinksStorage(serializedItem);
     }
-    // localStorage.setItem("myItem", serializedItem);
   };
 
   const checkIfExists = (array: any[], idToCheck: any) => {
     return array.some((item) => item === idToCheck);
   };
-  // Funkcja dodająca nowe zadanie
-  const addTask = (id) => {
+  const addTask = (id: string) => {
     const taskExists = checkIfExists(tasks, id);
 
     if (!taskExists) {
-      const itemToAdd = [...tasks, id];
+      const itemToAdd: string[] = [...tasks, id];
       const serializedItem = JSON.stringify(itemToAdd);
 
       setTasks(itemToAdd);
@@ -62,22 +58,19 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
-  const removeTask = (id) => {
-    const updatedTasks = tasks.filter((task) => task.id !== id);
+  const removeTask = (id: string) => {
+    const updatedTasks = tasks.filter((task: any) => task.id !== id);
     setTasks(updatedTasks);
   };
 
-  // Funkcja sprawdzająca istnienie UUID w linkach
-  const linkExists = (id) => {
+  const linkExists = (id: string) => {
     return links.some((link) => link === id);
   };
 
-  // Funkcja sprawdzająca istnienie UUID w zadaniach
-  const taskExists = (id) => {
-    return tasks.some((task) => task === id);
+  const taskExists = (id: string) => {
+    return tasks.some((task: string) => task === id);
   };
 
-  // Wartości dostępne w kontekście
   const contextValues = {
     links,
     tasks,

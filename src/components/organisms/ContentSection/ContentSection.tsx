@@ -19,6 +19,7 @@ export const ContentSection: FC<PropsWithChildren<any>> = ({ contentObject, chil
               </div>
               <div className='border-t border-gray-200 py-5 '>
                 <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3'>
+                  {/* @ts-ignore*/}
                   {content[categoryName].map((contentLink: any) => {
                     return <Link key={contentLink.uuid} contentLink={contentLink} uuid={contentLink.uuid} />;
                   })}

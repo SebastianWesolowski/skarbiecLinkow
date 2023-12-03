@@ -1,11 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { FC, PropsWithChildren } from "react";
 
-const items = [
-  { id: 1 },
-  // More items...
-];
-
 export const Section: FC<PropsWithChildren<any>> = ({ category, children }) => {
   return (
     <></>

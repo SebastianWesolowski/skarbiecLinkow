@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hr.wesolowski.dev
+Host: https://skarbiec.wesolowski.dev
 
 # Sitemaps
-Sitemap: https://hr.wesolowski.dev/sitemap.xml
+Sitemap: https://skarbiec.wesolowski.dev/sitemap.xml

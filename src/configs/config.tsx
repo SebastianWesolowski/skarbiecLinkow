@@ -42,13 +42,13 @@ const config = {
   ],
   legal: {
     privacyPolicy: {
-      globalHref: "https://hr.wesolowski.dev/privacy-policy",
+      globalHref: "https://skarbiec.wesolowski.dev/privacy-policy",
       href: "/privacy-policy",
       file: "/file/polityka-prywatnosci.pdf",
       title: "Polityka prywatności",
     },
     marketingApprovals:
-      "Zgadzam się na przetwarzanie moich danych osobowych przez Sebastiana Wesołowskiego w celu realizacji usługi newsletter, a tym samym wysyłania mi informacji o produktach blogowych, usługach, promocjach lub nowościach zgodnie z <a href=''>polityką prywatności</a>. Wiem, że zgodę tę mogę w każdej chwili cofnąć. *",
+      "Zgadzam się na przetwarzanie moich danych osobowych przez Sebastiana Wesołowskiego w celu realizacji usługi newsletter, a tym samym wysyłania mi informacji o produktach b logowych, usługach, promocjach lub nowościach zgodnie z <a href=''>polityką prywatności</a>. Wiem, że zgodę tę mogę w każdej chwili cofnąć. *",
   },
 };
 

@@ -1,8 +1,8 @@
 import Basic from "./configBasic";
 
 const cardImage = {
-  first: "https://hr.wesolowski.dev/assets/image/openGraph.png",
-  second: "https://hr.wesolowski.dev/assets/image/openGraph.png",
+  first: "https://skarbiec.wesolowski.dev/assets/image/openGraph.png",
+  second: "https://skarbiec.wesolowski.dev/assets/image/openGraph.png",
 };
 
 const SEO = {
